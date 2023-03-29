@@ -5,14 +5,14 @@ class CLCalendar:
     def __init__(self):
         #RAW_CD is a constant value(CD stands for CurrentDate).
         #Useful for resetting rawCD.
-        
+
         self._RAW_CD = date.today()
         self._rawCD = self._RAW_CD
 
     def reset(self):
         #Resets _rawCD with the Constant RAW_CD (which grabs
         #todays date using date class)
-        
+
         self._rawCD = self._RAW_CD
         print("This is reset: " + str(self._rawCD))
 
@@ -22,12 +22,13 @@ class CLCalendar:
         #
         #index 1: Total num days in month (based on year and
         #         month _rawCD is set to).
-        
+
         return monthrange(self._rawCD.year, self._rawCD.month)
+
 
     def _counter(self, unit, start, stop):
         return 0
-                
+
 
     def getDayRangeBetweenDates(self, y1, m1, d1, y2, m2, d2) -> list:
         #For two specified Dates, (m1/d1/y1 and m2/d2/y2), get all the days in-between both dates (inclusive).
@@ -39,14 +40,14 @@ class CLCalendar:
         yearSame = y1 == y2
         monthSame = m1 == m2
         daySame = d1 == d2
-        
+
         while(True):
             try:
                 #print(currentMonth)
                 if(currentDay > d2 and currentMonth >= m2 and currentYear >= y2):
                     break
                 date(currentYear,currentMonth, currentDay)
-                outDayRange.append(str(currentMonth) + "/" + str(currentDay) + "/" + str(currentYear))                
+                outDayRange.append(str(currentMonth) + "/" + str(currentDay) + "/" + str(currentYear))
                 currentDay+=1
             except ValueError:
                 currentDay = 1
@@ -57,10 +58,10 @@ class CLCalendar:
                     currentMonth+=1
         return outDayRange
 
-            
-        
-        
-        
+
+
+
+
 
     def getCurrentDate(self) -> date:
         return self._rawCD
@@ -71,7 +72,7 @@ class CLCalendar:
                        day : int = None):
         #Provide the int value for the year, month, and/or day
         #you want to set to _rawCD
-        
+
         if day == None:
             if (month != None) or (year != None):
                 day = 1
@@ -86,8 +87,8 @@ class CLCalendar:
         print("This is temp: " + str(temp))
         self._rawCD = temp
 
- 
-        
+
+
 
 if __name__ == "__main__":
     cObj = CLCalendar()
